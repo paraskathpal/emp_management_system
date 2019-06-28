@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>    
+    <title>Update Employee Record</title>
+</head>
+<body>
+    <header>
+        <h1>Update Employee Record</h1>
+        <br>
+        
+        <div>
+        <form action="/update/" method="POST">
+            <br>
+            <div>
+                <input type="hidden" value="<%= record._id %>">
+            </div>
+            <div>
+                <label for="name">Enter Employee Name</label>
+                <input type="text" name="name" value="<%= record.name %>">
+            </div>
+            <br>
+            <div>
+                <label for="age">Enter Employee Age</label>
+                <input type="number" name="age"value="<%= record.age %>">
+            </div>
+            <br>
+            <div>
+                <label for="dept">Enter Employee Department</label>
+                <input type="text" name="dept" value="<%= record.department %>">
+            </div>
+            <br>
+            <div>
+                <label for="designation">Enter Employee Designation</label>
+                <select name="designation" >
+                    <option value="" <% if(record.designation == "" ) { %> selected <% } %>>--select designation--</option>
+                    <option value="trainee" <% if(record.designation == "Trainee" ) { %> selected <% } %>>Trainee</option>
+                    <option value="employee" <% if(record.designation == "Employee") { %> selected <% }%>>Employee</option>
+                    <option value="manager" <% if(record.designation == "Manager" ) { %> selected <% } %>>Manager</option>
+                    <option value="freelancer" <% if(record.designation == "Free-Lancer" ) { %> selected <% } %>>Free-Lancer</option>
+                </select>
+            </div>
+            <br>
+            <div>
+                <button type="submit">Update</button>
+            </div>
+        </form>
+        </div>
+
+    </header>
+    <br>
+
+    <section>
+        <a href="/disp"><button> Display All Employees </button></a>
+        <br>
+        <br>
+        <div>
+        <a href="/addEmployee"><button>Add New Employee</button></a>
+        </div>
+    </section>
+</body>
+</html>
