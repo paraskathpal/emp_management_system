@@ -9,34 +9,34 @@
         <br>
         
         <div>
-        <form action="/update/<% result.emp_id %>" method="POST">
+        <form action="/update/" method="POST">
             <br>
             <div>
-                <input type="hidden" value="<%= result.emp_id %>">
+                <input type="hidden" value="<%= result[0].emp_id %>">
             </div>
             <div>
                 <label for="name">Enter Employee Name</label>
-                <input type="text" name="name" value="<%= result.name %>">
+                <input type="text" name="name" value="<%= result[0].name %>">
             </div>
             <br>
             <div>
                 <label for="age">Enter Employee Age</label>
-                <input type="number" name="age"value="<%= result.age %>">
+                <input type="number" name="age"value="<%= result[0].age %>">
             </div>
             <br>
             <div>
                 <label for="dept">Enter Employee Department</label>
-                <input type="text" name="dept" value="<%= result.department %>">
+                <input type="text" name="dept" value="<%= result[0].department %>">
             </div>
             <br>
             <div>
                 <label for="designation">Enter Employee Designation</label>
                 <select name="designation" >
-                    <option value="" <% if(result.designation == "" ) { %> selected <% } %>>--select designation--</option>
-                    <option value="trainee" <% if(result.designation == "Trainee" ) { %> selected <% } %>>Trainee</option>
-                    <option value="employee" <% if(result.designation == "Employee") { %> selected <% }%>>Employee</option>
-                    <option value="manager" <% if(result.designation== "Manager" ) { %> selected <% } %>>Manager</option>
-                    <option value="freelancer" <% if(result.designation == "Free-Lancer" ) { %> selected <% } %>>Free-Lancer</option>
+                    <option value="" <% if(result[0].designation == "" ) { %> selected <% } %>>--select designation--</option>
+                    <option value="trainee" <% if(result[0].designation == "Trainee" ) { %> selected <% } %>>Trainee</option>
+                    <option value="employee" <% if(result[0].designation == "Employee") { %> selected <% }%>>Employee</option>
+                    <option value="manager" <% if(result[0].designation== "Manager" ) { %> selected <% } %>>Manager</option>
+                    <option value="freelancer" <% if(result[0].designation == "Free-Lancer" ) { %> selected <% } %>>Free-Lancer</option>
                 </select>
             </div>
             <br>
