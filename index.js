@@ -181,7 +181,7 @@ app.get('/update/:id',checkLogin,(req,res) => {
     
 });
 
-app.post('/update/',checkLogin,(req,res) => {
+app.post('/update/:id',checkLogin,(req,res) => {
     console.log(req.params.id);
     const query = 'update employee set name = $1, age=$2,department=$3,designation=$4 where emp_id = $5'
     const params = [req.body.name,req.body.age,req.body.department,req.body.designation,req.params.id];
