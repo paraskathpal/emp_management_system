@@ -30,12 +30,16 @@ function checkLogin(req,res,next) {
       }
     next();
 } 
-const connectionString = 'postgresql://postgres:paras123@localhost:5432/employee_record'
+const connectionString = require('./.config/url').DBURL;
 
 const client = new Client({
     connectionString: connectionString
   })
-  client.connect()
+  client.connect().then(() => {
+      console.log('connected to database');
+  }).catch((err) => {
+      console.log('error occured can not ')
+  })
 
 // - - - - - - sign in page  - - - - - - - //
 app.get('/',(req,res) => {
@@ -46,10 +50,9 @@ app.post('/',(req,res) => {
    var {username,password} = req.body;
    client.query('select * from login_data')
    .then((result) => {
-       var username= req.body.username;
-       var password = req.body.password;
        var userCheck = result.rows[0].username;
        var userPass = result.rows[0].password;
+   });
        console.log(username);
        console.log(password);
         var errors = [];
@@ -70,7 +73,6 @@ app.post('/',(req,res) => {
     localStorage.setItem('loginToken',loginToken);
     res.redirect('/HomePage');
 
-   });
 });
 
 
@@ -209,7 +211,10 @@ app.post('/update/:id',checkLogin,(req,res) => {
 
 app.get('/logout',(req,res) => {
     localStorage.removeItem('loginToken');
-    client.end();
+    client.end()
+    .then(() => {
+        console.log('disconnected from database');
+    });
     res.redirect('/');
 })
 app.listen(4000,() => {
